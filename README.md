@@ -1,2 +1,2 @@
 # linux-qrcode-login
-Authenticate yourself to your Linux Desktop machine with a QR code!
+Authenticate yourself to your Debian Desktop machine with a QR code!

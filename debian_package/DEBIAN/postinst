@@ -1,0 +1,9 @@
+#!/bin/bash
+
+chmod +x /lib/security/pam_oauth2_device.so
+
+chmod +x /var/www/cgi-bin/update_pam_com.sh
+chmod +x /var/www/cgi-bin/update_pam_decom.sh
+
+chmod +x /usr/share/web-greeter/themes/Theme-login
+

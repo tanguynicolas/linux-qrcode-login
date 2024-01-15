@@ -1,0 +1,9 @@
+Package: qrcode-authenticator
+Version: 1.0
+Section: base
+Priority: optional
+Architecture: all
+Depends: libnss-ldapd lightdm nodejs apache2
+Maintainer: "Groupe LPS UPJV" <noreply@u-picardie.fr>
+Homepage: www.u-picardie.fr
+Description: Utility that allows QRcode authentication method on Debian.
