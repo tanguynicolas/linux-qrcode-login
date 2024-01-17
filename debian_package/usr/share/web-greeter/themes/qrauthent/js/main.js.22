@@ -1,0 +1,93 @@
+// Définition de la fonction handleInput avant son attachement aux événements
+function handle_input() {
+    //event.preventDefault(); // Empêche le rechargement de la page
+
+    var login = document.getElementById("login").value;
+    var password = document.getElementById("password").value;
+
+    window.lightdm.authenticate(login);
+    //window.lightdm.respond(login);
+//    window.lightdm.respond(password);
+
+    window.lightdm.show_prompt.connect(function(text, type) {
+        window.lightdm.respond(password);
+    });
+
+    // Traiter les données de connexion ici
+    //authenticateUser(login, password);
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Attacher les écouteurs d'événements après le chargement du DOM
+
+    window.lightdm.show_message.connect(show_message);
+    window.lightdm.show_prompt.connect(show_prompt);
+    window.lightdm.authentication_complete.connect(authentication_complete);
+    window.lightdm.autologin_timer_expired.connect(autologin_timer_expired); 
+
+  attachEventListeners();
+});
+
+function attachEventListeners() {
+    var loginForm = document.getElementById("login-form");
+    if (loginForm) {
+        loginForm.addEventListener("submit", handleInput);
+    }
+}
+
+
+//function authenticateUser(username, password) {
+    // Initier l'authentification avec LightDM
+//    window.lightdm.authenticate(username);
+
+    // Le mot de passe est envoyé en réponse au prompt de LightDM
+//    window.lightdm.show_prompt.connect(function(text, type) {
+//        window.lightdm.respond("");
+//    });
+//}
+
+// Callback appelé une fois l'authentification complète
+window.authentication_complete = function() {
+    if (window.lightdm.is_authenticated) {
+        // Démarrer la session par défaut
+        let session = window.lightdm.default_session;
+        document.documentElement.addEventListener('transitionend', () => {
+            document.documentElement.className = 'session_starting';
+        });
+    } else {
+        show_message("Authentication Failed", "error");
+        setTimeout(startAuthentication, 2000);
+    }
+};
+
+
+function show_message(text, type) {
+    var messages = document.getElementById('messages');
+    messages.innerHTML += `<p class="${type}">${text}</p>`;
+    messages.style.visibility = "visible";
+}
+
+function show_prompt(text, type) {
+    let prompt = document.getElementById("prompt");
+    let entry = type === "text" ? document.getElementById("login") : document.getElementById("password");
+
+    prompt.innerHTML = text;
+    entry.focus();
+}
+
+function startAuthentication() {
+    // Réinitialiser l'état pour une nouvelle tentative d'authentification
+    clearMessages();
+    window.lightdm.authenticate(); // Vous devrez peut-être ajuster ceci selon votre implémentation LightDM
+}
+
+function clearMessages() {
+    var messages = document.getElementById("messages");
+    messages.innerHTML = "";
+    messages.style.visibility = "hidden";
+}
+ 
+// autologin_timer_expired callback
+function autologin_timer_expired(username) {
+    /* Stub. Does nothing. */
+}

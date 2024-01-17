@@ -1,0 +1,231 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Open Sans', sans-serif;
+  transition: opacity 1s, background-color 1s, background-position 1s;
+  transition-timing-function: ease-in;
+}
+
+body {
+  background-image: url("../img/bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#login {
+    background-color: #ff0000b3;
+    font-size: 1.0rem;
+    cursor: pointer;
+    display: flex;
+
+}
+
+button:hover {
+    background-color: #4ffff;
+}
+
+html.session_starting, .session_starting body {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
+    background-position-y: -100%;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.topBox, .inputBox, .messageBox {
+    width: 100%;
+    height: 33.33%;
+    text-align: center;
+}
+
+.inputBox {
+    position: relative;
+}
+
+.wrapper {
+    height: 85px;
+    width: 350px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.topBox {
+    display: none !important;
+    text-align: right;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.messageBox {
+    text-align: center;
+    visibility: hidden;
+}
+
+#texte{
+   
+    margin-top: 15px;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 1);
+}
+
+input#entry {
+/*    display: none !important; */ 
+    outline: none;
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: none;
+    box-sizing: border-box;
+    line-height: normal;
+    transition: .3s ease;
+    border: none !important; 
+    padding: 14px 4% !important; 
+    font-size: 16px;
+    color: #666;
+    background-color: #fff;
+    width: 100%;
+    font-weight: 400;
+    border-radius: 3px !important;
+    margin-top: 15px;
+}
+
+
+input#entry:focus {
+    background: rgba(255, 255, 255, 0.9);
+    color: rgba(0, 0, 0, 0.75);
+}
+
+input#entry:focus::placeholder {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.33);
+  padding: 2em;
+  background: rgba(250, 250, 250, 0.9);
+}
+
+.modal * {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.modal .form input, .selects {
+  box-sizing: border-box;
+  display: block;
+  margin: 0.5em auto;
+  width: 80%;
+}
+
+.wiggle {
+  animation-name: wiggle;
+  animation-duration: 0.25s;
+  animation-iteration-count: 4;
+  animation-timing-function: linear;
+}
+
+.password {
+  display: none !important;
+  transition: background 300ms;
+  background-color: white;
+}
+
+.form {
+  display: none !important;
+}
+
+.pic {
+  display: none !important;
+}
+
+.wrong {
+  background-color: rgba(200, 0, 0, 0.5);
+}
+
+.selects {
+  display: flex;
+  flex-direction: row;
+}
+
+.selects select {
+  display: block;
+  width: 100%;
+}
+
+.selects select:nth-child(1) {
+  margin-right: 0.5em;
+  flex-grow: 2;
+}
+.selects select:nth-child(2) {
+  flex-shrink: 2;
+}
+
+.profileWrapper {
+  width: 7.5em;
+  margin: 1em auto 2.5em auto;
+}
+
+.profileWrapper img {
+  box-shadow: 0em 0em 0.15em 0em rgba(0, 0, 0, 0.5);
+ /* border-radius: 50%;*/
+  width: 100%;
+  height: auto;
+}
+
+footer {
+  box-sizing: border-box;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 1em 1em;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+footer span.fa {
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  float: left;
+}
+footer span.fa:nth-child(2) {
+  margin-left: 2em
+}
+footer span.fa span {
+  font-size: 0.75em;
+  margin-left: 0.3em;
+}
+footer span.time {
+  font-size: 1rem;
+  float: right;
+}
+footer span {
+  font-family: 'Open Sans', sans-serif;
+}
+
+@keyframes wiggle {
+  0% { transform: translateX(0em); }
+  25% { transform: translateX(-0.25em); }
+  50% { transform: translateX(0em); }
+  75% { transform: translateX(0.25em); }
+  100% { transform: translateX(0em); }
+}

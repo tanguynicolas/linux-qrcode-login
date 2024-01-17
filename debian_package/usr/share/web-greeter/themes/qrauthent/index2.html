@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+
+<head>
+    <link rel="stylesheet" href="style/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style/main.css">
+    <meta charset="utf-8">
+</head>
+
+<body id="body">
+  <div class="container">
+	<div class="topBox">
+		<img onclick="javascript:lightdm.shutdown();" src="power_button.png"/>
+	</div>
+	<div class="inputBox">
+		<div class="wrapper">
+			<div id="prompt"></div>
+			<form action="javascript:handle_input();">
+				<div id="texte">Saisissez votre identifiant puis votre mot de passe.</div>
+				<input id="entry" />
+			</form>
+		</div>
+	</div>
+	<div class="messageBox" id="messages"></div>
+  </div>
+
+<main class="modal">
+
+  <div class="pic">
+     <img class="user_pic">
+  </div>
+
+      <form class="form" onsubmit="return false;">
+        <div class="selects">
+          <select class="userSelect">
+          </select>
+          <select class="wmSelect">
+          </select>
+        </div>
+        <input autofocus class="password" type="password" placeholder="Password">
+        <input type="submit" class="sign-in" value="Sign in">
+      </form>
+
+  <button class="sign-in" id="login">
+    <span>OR-code connecte</span>
+  </button>
+</main>
+
+<footer>
+  <span class="fa fa-power-off power">
+    <span>Shutdown</span>
+  </span>
+  <span class="fa fa-repeat reboot">
+    <span>Reboot</span>
+  </span>
+  <span class="time"></span>
+</footer>
+
+  <script>
+    document.getElementById('login').addEventListener('click', function() {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'http://localhost:9898/qrcode-login', true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+          if (xhr.status == 200) {
+            console.log('La requête a été effectuée avec succès.');
+            console.log(xhr.responseText);
+          } else {
+            console.error('La requête a échoué avec le statut : ' + xhr.status);
+          }
+        }
+      };
+      xhr.send();
+      window.location.href = 'index.html';
+    });
+  </script>
+
+<script src="js/main.js" charset="utf-8"></script>
+<script src="js/main3.js" charset="utf-8"></script>
+<!--<script src="../_vendor/js/mock.js"></script>-->
+</body>
+</html>

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# For LDAP users
+pam-auth-update --force --enable mkhomedir
+
+# Install nody-greeter
+cd /tmp
+git clone --recursive https://github.com/JezerM/nody-greeter.git
+cd nody-greeter
+npm install
+npm run rebuild
+npm run build
+node make install
+
