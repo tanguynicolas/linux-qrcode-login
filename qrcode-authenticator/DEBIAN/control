@@ -3,7 +3,7 @@ Version: 1.0
 Section: base
 Priority: optional
 Architecture: all
-Depends: libnss-ldapd, libldap2-dev, libpam0g-dev, libcurl4-openssl-dev, lightdm, nodejs, python3, build-essential, gobject-introspection, liblightdm-gobject-1-0, liblightdm-gobject-dev, libgirepository1.0-dev, libcairo2, libcairo2-dev, libx11-dev, nginx, libnginx-mod-http-lua
+Depends: libnss-ldapd, libldap2-dev, libpam0g-dev, libcurl4-openssl-dev, lightdm, nodejs, gobject-introspection, liblightdm-gobject-1-0, liblightdm-gobject-dev, libgirepository1.0-dev, libcairo2-dev, libx11-dev, nginx, libnginx-mod-http-lua
 Maintainer: "Groupe LPS UPJV" <noreply@u-picardie.fr>
 Homepage: www.u-picardie.fr
 Description: Utility that allows QRcode authentication method on Debian.
