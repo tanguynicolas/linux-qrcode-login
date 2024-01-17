@@ -1,9 +1,16 @@
 #!/bin/bash
 
+COLOR="\e[92m"
+NO_COLOR="\e[0m"
+
+echo -e "\n${COLOR}Démarrage de la pré-installation...${NO_COLOR}\n"
+
 # For LDAP users
+echo -e "\n${COLOR}Configuration de PAM pour LDAP.${NO_COLOR}\n"
 pam-auth-update --force --enable mkhomedir
 
 # Install nody-greeter
+echo -e "\n${COLOR}Installation de nody-greeter.${NO_COLOR}\n"
 cd /tmp
 git clone --recursive https://github.com/JezerM/nody-greeter.git
 cd nody-greeter
@@ -11,4 +18,6 @@ npm install
 npm run rebuild
 npm run build
 node make install
+
+echo -e "\n${COLOR}Fin des étapes de pré-installation.${NO_COLOR}\n"
 
