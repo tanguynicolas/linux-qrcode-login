@@ -10,14 +10,27 @@ echo -e "\n${COLOR}Configuration de PAM.${NO_COLOR}\n"
 chmod +x /lib/security/pam_oauth2_device.so
 
 echo -e "\n${COLOR}Configuration du serveur WEB.${NO_COLOR}\n"
-chmod +x /etc/nginx/bin/update_pam_com.sh
-chmod +x /etc/nginx/bin/update_pam_uncom.sh
+chmod u+x /etc/nginx/bin/update_pam_com.sh
+chmod u+x /etc/nginx/bin/update_pam_uncom.sh
+chown www-data:www-data /etc/nginx/bin/update_pam_com.sh
+chown www-data:www-data /etc/nginx/bin/update_pam_uncom.sh
 ln -s /etc/nginx/sites-available/qrauthent.conf /etc/nginx/sites-enabled/qrauthent.conf
+setfacl -m u:www-data:rwx /etc/pam.d/
+setfacl -m u:www-data:rw /etc/pam.d/lightdm-autologin
 systemctl restart nginx
 
 echo -e "\n${COLOR}Configuration de Lightdm.${NO_COLOR}\n"
 chmod +x /usr/share/web-greeter/themes/qrauthent
 systemctl restart lightdm
 
-echo -e "\n${COLOR}Le programme d'authentification par QRcode a bien été installé !\nVeuillez redémarrer la machine via la commande suivante :\n\tsudo shutdown -h now\n\n À bientôt.${NO_COLOR}"
+echo -e "\n${COLOR}Rétablissement des propriétés de fichier.${NO_COLOR}\n"
+chown root:root /etc/lightdm/lightdm.conf
+chown root:root /etc/lightdm/web-greeter.yml
+chown root:root /etc/nginx/sites-available/qrauthent.conf
+chown root:root /etc/pam.d/lightdm-autologin
+chown root:root /lib/security/pam_oauth2_device.so
+chown root:root /etc/pam_oauth2_device/config.json
+chown -R root:root /usr/share/web-greeter/themes/qrauthent
+
+echo -e "\n${COLOR}Le programme d'authentification par QRcode a bien été installé !\nVeuillez redémarrer la machine via la commande suivante :\n\tsudo shutdown -h now\n\nÀ bientôt.\n${NO_COLOR}"
 
