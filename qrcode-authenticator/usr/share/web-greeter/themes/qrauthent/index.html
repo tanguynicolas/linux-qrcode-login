@@ -30,7 +30,7 @@
   <div id="texte">Flashez ce QRcode pour vous connecter</div>
 
   <div class="profileWrapper">
-     <img src="/usr/share/web-greeter/themes/simple/qrcode.png" id="qrcode" />
+     <img src="/usr/share/web-greeter/themes/qrauthent/qrcode.png" id="qrcode" />
   </div>
 
   <div class="pic">
@@ -86,7 +86,7 @@
 <script>
 setInterval(function() {
 	var myImageElement = document.getElementById('qrcode');
-	myImageElement.src = '/usr/share/web-greeter/themes/simple/qrcode.png?rand=' + Math.random();
+	myImageElement.src = '/usr/share/web-greeter/themes/qrauthent/qrcode.png?rand=' + Math.random();
 }, 1000);
 
 </script>
