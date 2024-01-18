@@ -14,6 +14,7 @@ dpkg-deb --build qrcode-authenticator
 *You need to have python3 and libcairo2 (pre-installed on Debian 11).*
 
 ```bash
-sudo apt install ./qrcode-authenticator.deb
+sudo apt update
+sudo apt -o Dpkg::Options::="--force-overwrite" install ./qrcode-authenticator.deb
 ```
 
