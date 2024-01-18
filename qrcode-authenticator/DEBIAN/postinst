@@ -21,7 +21,6 @@ systemctl restart nginx
 
 echo -e "\n${COLOR}Configuration de Lightdm.${NO_COLOR}\n"
 chmod +x /usr/share/web-greeter/themes/qrauthent
-systemctl restart lightdm
 
 echo -e "\n${COLOR}Rétablissement des propriétés de fichier.${NO_COLOR}\n"
 chown root:root /etc/lightdm/lightdm.conf
