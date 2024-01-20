@@ -12,15 +12,6 @@
 	<div class="topBox">
 		<img onclick="javascript:lightdm.shutdown();" src="power_button.png"/>
 	</div>
-	<div class="inputBox">
-		<div class="wrapper">
-			<div id="prompt"></div>
-			<form action="javascript:handle_input();">
-				<div id="texte">Saisissez votre nom d'utilisateur puis votre mot de passe</div>
-				<input id="entry" />
-			</form>
-		</div>
-	</div>
 	<div class="messageBox" id="messages"></div>
   </div>
 
@@ -40,7 +31,15 @@
         <input autofocus class="password" type="password" placeholder="Password">
         <input type="submit" class="sign-in" value="Sign in">
       </form>
-
+  <div class="inputBox">
+		<div class="wrapper">
+			<div id="prompt"></div>
+			<form action="javascript:handle_input();">
+				<div id="texte">Saisissez le nom d'utilisateur puis le mot de passe</div>
+				<input id="entry" />
+			</form>
+		</div>
+	</div>
   <button class="sign-in" id="login">
     <span>Connexion par QRcode</span>
   </button>
@@ -48,10 +47,10 @@
 
 <footer>
   <span class="fa fa-power-off power">
-    <span>Shutdown</span>
+    <span>Arrêter</span>
   </span>
   <span class="fa fa-repeat reboot">
-    <span>Reboot</span>
+    <span>Redémarrer</span>
   </span>
   <span class="time"></span>
 </footer>

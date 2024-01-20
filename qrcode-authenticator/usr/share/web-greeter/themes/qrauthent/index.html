@@ -27,15 +27,16 @@
 <main class="modal">
 
   <!-- Nouvelle ligne -->
-  <div id="texte">Flashez ce QRcode pour vous connecter</div>
+  <center>
+    <h3 id="texte">Flashez le QRcode</h3>
+  
+    <div class="profileWrapper">
+      <img src="/usr/share/web-greeter/themes/qrauthent/qrcode.png" id="qrcode" />
+    </div>
 
-  <div class="profileWrapper">
-     <img src="/usr/share/web-greeter/themes/qrauthent/qrcode.png" id="qrcode" />
-  </div>
-
-  <div class="pic">
-     <img class="user_pic">
-  </div>
+    <div class="pic">
+       <img class="user_pic">
+    </div>
 
       <form class="form" onsubmit="return false;">
         <div class="selects">
@@ -47,19 +48,19 @@
         <input autofocus class="password" type="password" placeholder="Password">
         <input type="submit" class="sign-in" value="Sign in">
       </form>
-  
-  <button class="sign-in" id="login">
-    <span>Connexion par mot de passe</span>
-  </button>
+    <button class="sign-in" id="login">
+      <span>Autre mode de connexion</span>
+    </button>
+  </center>
 
 </main>
 
 <footer>
   <span class="fa fa-power-off power">
-    <span>Shutdown</span>
+    <span>Arrêter</span>
   </span>
   <span class="fa fa-repeat reboot">
-    <span>Reboot</span>
+    <span>Redémarrer</span>
   </span>
   <span class="time"></span>
 </footer>
