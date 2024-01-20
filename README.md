@@ -15,6 +15,6 @@ dpkg-deb --build qrcode-authenticator
 
 ```bash
 sudo apt update
-sudo apt -o Dpkg::Options::="--force-overwrite" install ./qrcode-authenticator.deb
+sudo DEBIAN_FRONTEND=noninteractive apt -o Dpkg::Options::="--force-overwrite" install -y ./qrcode-authenticator.deb
 ```
 
