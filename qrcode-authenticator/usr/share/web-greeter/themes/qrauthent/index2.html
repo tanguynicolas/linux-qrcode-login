@@ -12,7 +12,6 @@
 	<div class="topBox">
 		<img onclick="javascript:lightdm.shutdown();" src="power_button.png"/>
 	</div>
-	<div class="messageBox" id="messages"></div>
   </div>
 
 <main class="modal">
@@ -43,17 +42,36 @@
   <button class="sign-in" id="login">
     <span>Connexion par QRcode</span>
   </button>
+  <div class="messageBox" id="messages"></div>
 </main>
 
 <footer>
-  <span class="fa fa-power-off power">
-    <span>Arrêter</span>
-  </span>
-  <span class="fa fa-repeat reboot">
-    <span>Redémarrer</span>
-  </span>
-  <span class="time"></span>
+    <span class="fa fa-power-off power" onclick="arreter()">
+        <span>Arrêter</span>
+    </span>
+    <span class="fa fa-repeat reboot" onclick="redemarrer()">
+        <span>Redémarrer</span>
+    </span>
+    <span class="time"></span>
 </footer>
+
+<script>
+    function arreter() {
+        lightdm.shutdown();
+    }
+
+    function redemarrer() {
+        lightdm.restart();
+    }
+
+    function updateTime() {
+        var timeSpan = document.querySelector('.time');
+        var currentTime = new Date();
+        timeSpan.textContent = 'Heure actuelle : ' + currentTime.toLocaleTimeString();
+    }
+
+    setInterval(updateTime, 1000);
+</script>
 
   <script>
     document.getElementById('login').addEventListener('click', function() {
@@ -75,7 +93,5 @@
   </script>
 
 <script src="js/main.js" charset="utf-8"></script>
-<script src="js/main3.js" charset="utf-8"></script>
-<!--<script src="../_vendor/js/mock.js"></script>-->
 </body>
-</html>
+</html>  

@@ -29,7 +29,7 @@
   <!-- Nouvelle ligne -->
   <center>
     <h3 id="texte">Flashez le QRcode</h3>
-  
+
     <div class="profileWrapper">
       <img src="/usr/share/web-greeter/themes/qrauthent/qrcode.png" id="qrcode" />
     </div>
@@ -37,7 +37,6 @@
     <div class="pic">
        <img class="user_pic">
     </div>
-
       <form class="form" onsubmit="return false;">
         <div class="selects">
           <select class="userSelect">
@@ -52,18 +51,35 @@
       <span>Autre mode de connexion</span>
     </button>
   </center>
-
 </main>
 
 <footer>
-  <span class="fa fa-power-off power">
-    <span>Arrêter</span>
-  </span>
-  <span class="fa fa-repeat reboot">
-    <span>Redémarrer</span>
-  </span>
-  <span class="time"></span>
+    <span class="fa fa-power-off power" onclick="arreter()">
+        <span>Arrêter</span>
+    </span>
+    <span class="fa fa-repeat reboot" onclick="redemarrer()">
+        <span>Redémarrer</span>
+    </span>
+    <span class="time"></span>
 </footer>
+
+<script>
+    function arreter() {
+        lightdm.shutdown();
+    }
+
+    function redemarrer() {
+        lightdm.restart();
+    }
+
+    function updateTime() {
+        var timeSpan = document.querySelector('.time');
+        var currentTime = new Date();
+        timeSpan.textContent = 'Heure actuelle : ' + currentTime.toLocaleTimeString();
+    }
+
+    setInterval(updateTime, 1000);
+</script>
 
   <script>
     document.getElementById('login').addEventListener('click', function() {
@@ -90,9 +106,8 @@ setInterval(function() {
 	myImageElement.src = '/usr/share/web-greeter/themes/qrauthent/qrcode.png?rand=' + Math.random();
 }, 1000);
 
+
 </script>
 <script src="js/main2.js" charset="utf-8"></script>
-<script src="js/main3.js" charset="utf-8"></script>
-<!--<script src="../_vendor/js/mock.js"></script>-->
 </body>
-</html>
+</html> 
