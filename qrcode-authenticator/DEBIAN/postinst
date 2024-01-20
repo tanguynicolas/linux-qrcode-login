@@ -23,7 +23,10 @@ echo -e "\n${COLOR}Configuration de Lightdm.${NO_COLOR}\n"
 chmod +x /usr/share/web-greeter/themes/qrauthent
 
 echo -e "\n${COLOR}Rétablissement des propriétés de fichier.${NO_COLOR}\n"
+chown root:root /etc/nslcd.conf
+chown root:root /etc/nsswitch.conf
 chown root:root /etc/lightdm/lightdm.conf
+chown root:root /etc/X11/default-display-manager
 chown root:root /etc/lightdm/web-greeter.yml
 chown root:root /etc/nginx/sites-available/qrauthent.conf
 chown root:root /etc/pam.d/lightdm-autologin
