@@ -44,7 +44,7 @@
                         document.documentElement.addEventListener('transitionend', () => {window.lightdm.start_session(session)});
                         document.documentElement.className = 'session_starting';
                 } else {
-                        show_message("Authentication Failed", "error");
+                        show_message("Nom d'utilisateur ou mot de passe incorrect.", "error");
                         setTimeout(start_authentication, 2000);
                 }
         };
@@ -78,17 +78,6 @@
                 window.lightdm.authenticate(null);
  };
 
-/*        window.start_authentication = function() {
-         clear_messages();
-         // start without providing "user" to make the greeter prompt for "user"
-         window.lightdm.authenticate();
-
-         setTimeout(function(){
-                 window.lightdm.respond("");
-         }, 1000);
-    };
-*/
-
         /**
          * handle the input from the entry field.
          */
@@ -105,4 +94,4 @@
 
                 start_authentication()
         });
-
+ 
