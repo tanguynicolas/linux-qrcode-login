@@ -32,7 +32,7 @@ html.session_starting, .session_starting body {
     opacity: 0;
     background-color: rgba(0, 0, 0, 0);
     background-position-y: -100%;
-}
+} 
 
 .container {
     width: 100%;
@@ -152,7 +152,6 @@ input#entry:focus::placeholder {
   display: flex;
   flex-direction: row;
 }
-
 .selects select {
   display: block;
   width: 100%;
@@ -177,7 +176,6 @@ input#entry:focus::placeholder {
   width: 100%;
   height: auto;
 }
-
 footer {
   box-sizing: border-box;
   width: 100%;
@@ -218,3 +216,4 @@ footer span {
   75% { transform: translateX(0.25em); }
   100% { transform: translateX(0em); }
 }
+ 

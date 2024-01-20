@@ -70,11 +70,16 @@ html.session_starting, .session_starting body {
 .messageBox {
     text-align: center;
     visibility: hidden;
+    /* margin-top: 10px; */
+    font-size: 1.1rem;
+    background-color: yellow;
+    padding: 2px;
+    border-radius: 10px;
 }
 
 #texte{ 
     margin-top: 15px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -227,4 +232,4 @@ footer span {
   50% { transform: translateX(0em); }
   75% { transform: translateX(0.25em); }
   100% { transform: translateX(0em); }
-}
+}  
