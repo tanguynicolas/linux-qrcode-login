@@ -29,6 +29,7 @@
   <!-- Nouvelle ligne -->
   <center>
     <h3 id="texte">Flashez le QRcode</h3>
+    <h5> <span id="compteur"></span> </h5>
 
     <div class="profileWrapper">
       <img src="/usr/share/web-greeter/themes/qrauthent/qrcode.png" id="qrcode" />
@@ -80,11 +81,29 @@
 
     setInterval(updateTime, 1000);
 
+
     function actualiserPage() {
         location.reload();
     }
-    // Actualise la page toutes les 10 minutes (600 000 millisecondes)
-    setInterval(actualiserPage, 600000);
+
+   var tempsRestant = 600; // 600 secondes = 10 minutes
+
+    function afficherCompteur() {
+        var minutes = Math.floor(tempsRestant / 60);
+        var secondes = tempsRestant % 60;
+        document.getElementById('compteur').textContent = ' ' + minutes + ' min ' + secondes + ' sec';
+    }
+
+    // Actualise la page toutes les secondes
+    var intervalID = setInterval(function () {
+        tempsRestant--;
+        afficherCompteur();
+
+        if (tempsRestant <= 0) {
+            clearInterval(intervalID); // Arrête le compteur lorsque le temps >
+            actualiserPage(); // Actualise la page une fois le compteur terminé
+        }
+    }, 1000);
 
 </script>
 
@@ -111,7 +130,7 @@
 setInterval(function() {
 	var myImageElement = document.getElementById('qrcode');
 	myImageElement.src = '/usr/share/web-greeter/themes/qrauthent/qrcode.png?rand=' + Math.random();
-}, 1000);
+}, 1);
 
 
 </script>
