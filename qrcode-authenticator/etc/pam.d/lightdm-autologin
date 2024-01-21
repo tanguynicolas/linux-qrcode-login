@@ -4,7 +4,7 @@
 auth sufficient pam_oauth2_device.so /etc/pam_oauth2_device/config.json
 
 # Unix standard authentication
-auth requisite pam_unix.so try_first_pass
+@include common-auth
 
 # Block login if they are globally disabled
 auth      requisite pam_nologin.so
