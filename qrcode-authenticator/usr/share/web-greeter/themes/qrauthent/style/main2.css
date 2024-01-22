@@ -201,6 +201,9 @@ footer span.fa {
 footer span.fa:nth-child(2) {
   margin-left: 2em
 }
+footer span.fa:nth-child(3) {
+  margin-left: 2em;
+}
 footer span.fa span {
   font-size: 0.75em;
   margin-left: 0.3em;
