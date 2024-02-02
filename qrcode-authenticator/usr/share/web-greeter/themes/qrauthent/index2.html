@@ -9,17 +9,28 @@
 
 <body id="body">
   <div class="container">
-	<div class="topBox">
-		<img onclick="javascript:lightdm.shutdown();" src="power_button.png"/>
-	</div>
+     <div class="auth-box">
+        <h2 id="texte">Authentification classique</h2>
+        <div class="inputBox"> 
+	   <div class="wrapper">
+	      <div id="prompt"></div>
+              <form action="javascript:handle_input();">
+                <input id="entry" />
+              </form>
+	  </div>
+        </div>
+	<button class="button" id="login">Connexion par QRcode</button>
+        <div class="messageBox" id="messages"></div>
+     </div>
+     <div class="topBox">
+         <img onclick="javascript:lightdm.shutdown();" src="power_button.png"/>
+     </div>
   </div>
 
 <main class="modal">
-
   <div class="pic">
      <img class="user_pic">
   </div>
-
       <form class="form" onsubmit="return false;">
         <div class="selects">
           <select class="userSelect">
@@ -30,19 +41,6 @@
         <input autofocus class="password" type="password" placeholder="Password">
         <input type="submit" class="sign-in" value="Sign in">
       </form>
-  <div class="inputBox">
-		<div class="wrapper">
-			<div id="prompt"></div>
-			<form action="javascript:handle_input();">
-				<div id="texte">Saisissez le nom d'utilisateur puis le mot de passe</div>
-				<input id="entry" />
-			</form>
-		</div>
-	</div>
-  <button class="sign-in" id="login">
-    <span>Connexion par QRcode</span>
-  </button>
-  <div class="messageBox" id="messages"></div>
 </main>
 
 <footer>
@@ -57,47 +55,6 @@
     </span>
     <span class="time"></span>
 </footer>
-
-<script>
-    function arreter() {
-        lightdm.shutdown();
-    }
-
-    function redemarrer() {
-        lightdm.restart();
-    }
-
-    function updateTime() {
-        var timeSpan = document.querySelector('.time');
-        var currentTime = new Date();
-        timeSpan.textContent = ' ' + currentTime.toLocaleTimeString();
-    }
-    setInterval(updateTime, 1000);
-
-    function mettreEnVeille() {
-        lightdm.suspend();
-    }
-
-</script>
-
-  <script>
-    document.getElementById('login').addEventListener('click', function() {
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'http://localhost:9898/qrcode-login', true);
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4) {
-          if (xhr.status == 200) {
-            console.log('La requête a été effectuée avec succès.');
-            console.log(xhr.responseText);
-          } else {
-            console.error('La requête a échoué avec le statut : ' + xhr.status);
-          }
-        }
-      };
-      xhr.send();
-      window.location.href = 'index.html';
-    });
-  </script>
 
 <script src="js/main.js" charset="utf-8"></script>
 </body>

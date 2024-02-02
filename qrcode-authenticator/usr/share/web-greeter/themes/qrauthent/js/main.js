@@ -94,4 +94,41 @@
 
                 start_authentication()
         });
- 
+
+// Nouvelles lignes
+    function arreter() {
+        lightdm.shutdown();
+    }
+
+    function redemarrer() {
+        lightdm.restart();
+    }
+
+    function updateTime() {
+        var timeSpan = document.querySelector('.time');
+        var currentTime = new Date();
+        timeSpan.textContent = ' ' + currentTime.toLocaleTimeString();
+    }
+    setInterval(updateTime, 1000);
+
+    function mettreEnVeille() {
+        lightdm.suspend();
+    }
+
+    document.getElementById('login').addEventListener('click', function() {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'http://localhost:9898/qrcode-login', true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+          if (xhr.status == 200) {
+            console.log('La requête a été effectuée avec succès.');
+            console.log(xhr.responseText);
+          } else {
+            console.error('La requête a échoué avec le statut : ' + xhr.status);
+          }
+        }
+      };
+      xhr.send();
+      window.location.href = '/usr/share/web-greeter/themes/qrauthent/index.html';
+    });
+

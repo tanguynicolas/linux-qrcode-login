@@ -8,29 +8,26 @@
 </head>
 
 <body id="body">
-
-<div class="container">
-	<div class="topBox">
-		<img onclick="javascript:lightdm.shutdown();" src="power_button.png"/>
-	</div>
-	<div class="inputBox">
-		<div class="wrapper">
-			<div id="prompt"></div>
-			<form action="javascript:handle_input();">
-				<input id="entry" />
-			</form>
-		</div>
-	</div>
-	<div class="messageBox" id="messages"></div>
-</div>
+    <div class="container">
+        <div class="topBox">
+	    <img onclick="javascript:lightdm.shutdown();" src="power_button.png"/>
+        </div>
+        <div class="inputBox">
+        <div class="wrapper">
+           <div id="prompt"></div>
+           <form action="javascript:handle_input();">
+               <input id="entry" />
+           </form>
+        </div>
+        </div>
+        <div class="messageBox" id="messages"></div>
+    </div>
 
 <main class="modal">
-
-  <!-- Nouvelle ligne -->
-  <center>
-    <h3 id="texte">Flashez le QRcode</h3>
-    <h5> <span id="compteur"></span> </h5>
-
+<!-- Nouvelle ligne -->
+ <center>
+    <h3 id="texte">Authentification par QR Code</h3>
+    <div> <span id="compteur"></span> </div>
     <div class="profileWrapper">
       <img src="/usr/share/web-greeter/themes/qrauthent/qrcode.png" id="qrcode" />
     </div>
@@ -48,10 +45,11 @@
         <input autofocus class="password" type="password" placeholder="Password">
         <input type="submit" class="sign-in" value="Sign in">
       </form>
-    <button class="sign-in" id="login">
-      <span>Autre mode de connexion</span>
+
+    <button class="button" id="login">
+      <span>Changer de mode d'authentification</span>
     </button>
-  </center>
+</center>
 </main>
 
 <footer>
@@ -67,78 +65,6 @@
     <span class="time"></span>
 </footer>
 
-<script>
-    function arreter() {
-        lightdm.shutdown();
-    }
-
-    function redemarrer() {
-        lightdm.restart();
-    }
-
-    function updateTime() {
-        var timeSpan = document.querySelector('.time');
-        var currentTime = new Date();
-        timeSpan.textContent = ' ' + currentTime.toLocaleTimeString();
-    }
-    setInterval(updateTime, 1000);
-
-    function mettreEnVeille() {
-        lightdm.suspend();
-    }
-
-    function actualiserPage() {
-        location.reload();
-    }
-
-   var tempsRestant = 600; // 600 secondes = 10 minutes
-
-    function afficherCompteur() {
-        var minutes = Math.floor(tempsRestant / 60);
-        var secondes = tempsRestant % 60;
-        document.getElementById('compteur').textContent = ' ' + minutes + ' min ' + secondes + ' sec';
-    }
-
-    // Actualise la page toutes les secondes
-    var intervalID = setInterval(function () {
-        tempsRestant--;
-        afficherCompteur();
-
-        if (tempsRestant <= 0) {
-            clearInterval(intervalID); // Arrête le compteur lorsque le temps >
-            actualiserPage(); // Actualise la page une fois le compteur terminé
-        }
-    }, 1000);
-
-</script>
-
-  <script>
-    document.getElementById('login').addEventListener('click', function() {
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'http://localhost:9898/unix-login', true);
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4) {
-          if (xhr.status == 200) {
-            console.log('La requête a été effectuée avec succès.');
-            console.log(xhr.responseText);
-          } else {
-            console.error('La requête a échoué avec le statut : ' + xhr.status);
-          }
-        }
-      };
-      xhr.send();
-      window.location.href = 'index2.html';
-    });
-  </script>
-
-<script>
-setInterval(function() {
-	var myImageElement = document.getElementById('qrcode');
-	myImageElement.src = '/usr/share/web-greeter/themes/qrauthent/qrcode.png?rand=' + Math.random();
-}, 1);
-
-
-</script>
 <script src="js/main2.js" charset="utf-8"></script>
 </body>
 </html> 

@@ -9,7 +9,6 @@ body, html {
   transition-timing-function: ease-in;
 }
 
-
 body {
   background-image: url("../img/bg.jpg");
   background-repeat: no-repeat;
@@ -17,15 +16,24 @@ body {
   background-size: cover;
 }
 
-#login {
-    background-color: #DAA520;
-    font-size: 1.0rem;
+.button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    display: flex;
 }
 
 button:hover {
-    background-color: #4ffff;
+    background-color: #45a049;
 }
 
 html.session_starting, .session_starting body {
@@ -163,11 +171,6 @@ input#entry:focus::placeholder {
 }
 .selects select:nth-child(2) {
   flex-shrink: 2;
-}
-
-#compteur {
-  background-color: white;
-  color: blue;
 }
 
 .profileWrapper {

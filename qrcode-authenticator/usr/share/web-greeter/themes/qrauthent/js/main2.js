@@ -104,3 +104,70 @@
 
                 start_authentication()
         });
+
+
+// Nouvelles lignes
+    function arreter() {
+        lightdm.shutdown();
+    }
+
+    function redemarrer() {
+        lightdm.restart();
+    }
+
+    function updateTime() {
+        var timeSpan = document.querySelector('.time');
+        var currentTime = new Date();
+        timeSpan.textContent = ' ' + currentTime.toLocaleTimeString();
+    }
+    setInterval(updateTime, 1000);
+
+    function mettreEnVeille() {
+        lightdm.suspend();
+    }
+
+    function actualiserPage() {
+        location.reload();
+    }
+
+   var tempsRestant = 600; // 600 secondes = 10 minutes
+
+    function afficherCompteur() {
+        var minutes = Math.floor(tempsRestant / 60);
+        var secondes = tempsRestant % 60;
+        document.getElementById('compteur').textContent = ' ' + minutes + ' min ' + secondes + ' sec';
+    }
+
+    // Actualise la page toutes les secondes
+    var intervalID = setInterval(function () {
+        tempsRestant--;
+        afficherCompteur();
+
+        if (tempsRestant <= 0) {
+            clearInterval(intervalID); // Arrête le compteur lorsque le temps >
+            actualiserPage(); // Actualise la page une fois le compteur terminé
+        }
+    }, 1000);
+
+
+    document.getElementById('login').addEventListener('click', function() {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'http://localhost:9898/unix-login', true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+          if (xhr.status == 200) {
+            console.log('La requête a été effectuée avec succès.');
+            console.log(xhr.responseText);
+          } else {
+            console.error('La requête a échoué avec le statut : ' + xhr.status);
+          }
+        }
+      };
+      xhr.send();
+      window.location.href = '/usr/share/web-greeter/themes/qrauthent/index2.html';
+    });
+
+setInterval(function() {
+        var myImageElement = document.getElementById('qrcode');
+        myImageElement.src = '/usr/share/web-greeter/themes/qrauthent/qrcode.png?rand=' + Math.random();
+}, 100);
