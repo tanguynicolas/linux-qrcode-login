@@ -39,6 +39,22 @@
         window.authentication_complete = function() {
                 if (window.lightdm.is_authenticated) {
                         // Start default session
+
+                        // Nouvelles lignes
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('GET', 'http://localhost:9898/qrcode-login', true);
+                          xhr.onreadystatechange = function() {
+                          if (xhr.readyState == 4) {
+                            if (xhr.status == 200) {
+                              console.log('La requête a été effectuée avec succès.');
+                              console.log(xhr.responseText);
+                            } else {
+                              console.error('La requête a échoué avec le statut : ' + xhr.status);
+                            }
+                          }
+                        };
+                        xhr.send();
+
                         // let body = document.getElementById('body');
                         let session = window.lightdm.default_session
                         document.documentElement.addEventListener('transitionend', () => {window.lightdm.start_session(session)});
