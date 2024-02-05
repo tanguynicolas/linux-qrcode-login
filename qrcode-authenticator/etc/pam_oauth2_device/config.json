@@ -2,7 +2,7 @@
 	"oauth": {
     	"client": {
         	"id": "workstation",
-        	"secret": "DcsdjMkCzZv4U4eEQHiRnHtU2qZ22i1Y"
+        	"secret": "xmaMCMRdlonJEKmS4hInguEEVKeKaVIp"
     	},
     	"scope": "openid profile",
     	"device_endpoint": "https://auth.tintamarre.info/realms/master/protocol/openid-connect/auth/device",
